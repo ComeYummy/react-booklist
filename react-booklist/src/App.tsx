@@ -1,56 +1,20 @@
 import React, { FC } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router";
 import BookList from "./components/BookList";
-import getDataFromAPI from "./Api";
+import SelectBook from "./components/SelectBook";
 
 const App: FC = () => {
-  const languages = ["React", "Vue", "Angular"];
   return (
-    <BrowserRouter>
-      <div>
-        <h1>React App</h1>
-        <ul>
-          <li>
-            <Link to="/">React</Link>
-          </li>
-          <li>
-            <Link to="/vue">Vue</Link>
-          </li>
-          <li>
-            <Link to="/angular">Angular</Link>
-          </li>
-        </ul>
-        <hr />
+    <>
+      <Switch>
+        <Route exact path="/" component={SelectBook} />
         <Route
-          exact
-          path="/"
-          render={(props) => (
-            <BookList
-              language={languages[0]}
-              getData={(keyword) => getDataFromAPI(keyword)}
-            />
-          )}
+          path="/list/:keyword"
+          render={(props) => <BookList keyword={props.match.params.keyword} />}
         />
-        <Route
-          path="/vue"
-          render={(props) => (
-            <BookList
-              language={languages[1]}
-              getData={(keyword) => getDataFromAPI(keyword)}
-            />
-          )}
-        />
-        <Route
-          path="/angular"
-          render={(props) => (
-            <BookList
-              language={languages[2]}
-              getData={(keyword) => getDataFromAPI(keyword)}
-            />
-          )}
-        />
-      </div>
-    </BrowserRouter>
+        <Redirect to="/" />
+      </Switch>
+    </>
   );
 };
 

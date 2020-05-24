@@ -1,28 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
-import { AxiosResponse } from "axios";
+import getDataFromAPI, { APIResponse } from "../repositories/Api";
 
 interface BookListProps {
-  language: string;
-  getData: (keyword: string) => Promise<AxiosResponse<APIResponse>>;
-}
-
-interface APIResponse {
-  totalItems: number;
-  items: Book[];
-}
-
-interface Book {
-  id: string;
-  etag: string;
-  selfLink: string;
-  volumeInfo: Info;
-}
-
-interface Info {
-  title: string;
-  authors: string[];
-  publisher: string;
-  description: string;
+  keyword: string;
 }
 
 const BookList: FC<BookListProps> = (props: BookListProps) => {
@@ -31,16 +11,16 @@ const BookList: FC<BookListProps> = (props: BookListProps) => {
     items: [],
   });
   useEffect(() => {
-    props
-      .getData?.(props.language)
-      .then((response) => setBookData(response.data));
+    getDataFromAPI(props.keyword).then((response) =>
+      setBookData(response.data)
+    );
   }, [props]);
 
   return (
     <div>
       <ul>
-        {bookData.items.map((x, index) => (
-          <li key={index}>{x.volumeInfo.title}</li>
+        {bookData.items.map((item, index) => (
+          <li key={index}>{item.volumeInfo.title}</li>
         ))}
       </ul>
     </div>
