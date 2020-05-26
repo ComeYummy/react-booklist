@@ -1,0 +1,21 @@
+{
+  "css.validate": true,
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "stylelint.enable": true,
+  "typescript.tsserver.trace": "verbose",
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

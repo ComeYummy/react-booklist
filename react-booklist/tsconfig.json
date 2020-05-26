@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "plugins": [
+      {
+        "name": "css-module-types"
+      }
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,10 +17,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "jsx": "preserve",
+    "outDir": "build",
+    "rootDirs": ["src"],
+    "typeRoots": ["@types", "node_modules/@types"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "dist", "scripts"]
 }
