@@ -7,6 +7,7 @@ interface BookListProps {
 
 const BookList: FC<BookListProps> = (props: BookListProps) => {
   const [bookData, setBookData] = useState<APIResponse>({
+    //stateの型は何がよいのか？
     totalItems: 0,
     items: [],
   });
@@ -14,7 +15,7 @@ const BookList: FC<BookListProps> = (props: BookListProps) => {
     getDataFromAPI(props.keyword).then((response) =>
       setBookData(response.data)
     );
-  }, [props]);
+  }, [props]); //配列なのはなぜ？
 
   return (
     <div>

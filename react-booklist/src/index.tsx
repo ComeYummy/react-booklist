@@ -1,15 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import {
+  StylesProvider,
+  ThemeProvider as MuiThemeProvider,
+} from "@material-ui/core/styles";
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 import "./index.css";
 import App from "./App";
+import { theme } from "./themes/theme";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <StylesProvider injectFirst>
+      <MuiThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={theme}>
+          <App />
+        </EmotionThemeProvider>
+      </MuiThemeProvider>
+    </StylesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

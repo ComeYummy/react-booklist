@@ -5,7 +5,7 @@ export interface Book {
   volumeInfo: Info;
 }
 
-export interface Info {
+interface Info {
   title: string;
   authors: string[];
   publisher: string;
