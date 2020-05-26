@@ -107,7 +107,7 @@ module.exports = {
         bracketSpacing: true,
         printWidth: 80,
         semi: true,
-        singleQuote: true,
+        singleQuote: false,
         trailingComma: "all",
         useTabs: false,
       },

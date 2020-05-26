@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "plugins": [
       {
         "name": "css-module-types"
@@ -19,9 +23,22 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "outDir": "build",
-    "rootDirs": ["src"],
-    "typeRoots": ["@types", "node_modules/@types"]
+    "rootDirs": [
+      "src"
+    ],
+    "typeRoots": [
+      "@types",
+      "node_modules/@types"
+    ],
+    "noEmit": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build", "dist", "scripts"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts"
+  ]
 }
